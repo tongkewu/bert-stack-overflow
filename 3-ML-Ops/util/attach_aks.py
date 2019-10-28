@@ -12,7 +12,7 @@ def get_aks(
         aks_target = workspace.compute_targets.get(compute_name)
         if aks_target is not None and type(aks_target) is AksCompute:
             print('Found existing compute target ' + compute_name
-                    + ' so using it.')
+                + ' so using it.')  # noqa: E127
         else:
             prov_config = AksCompute.provisioning_configuration(
                 cluster_purpose=AksCompute.ClusterPurpose.DEV_TEST)
