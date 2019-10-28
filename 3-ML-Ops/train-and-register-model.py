@@ -73,8 +73,7 @@ def main():
     datastore_name = 'tfworld'
     container_name = 'azureml-blobstore-7c6bdd88-21fa-453a-9c80-16998f02935f'
     account_name = 'tfworld6818510241'
-    # sas_token = '?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2019-11-08T05:12:15Z&st=2019-10-23T20:12:15Z&spr=https&sig=eDqnc51TkqiIklpQfloT5vcU70pgzDuKb5PAGTvCdx4%3D'  # noqa: E501
-    account_key = os.environ.get("DS_KEY")
+    sas_token = '?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2019-11-08T05:12:15Z&st=2019-10-23T20:12:15Z&spr=https&sig=eDqnc51TkqiIklpQfloT5vcU70pgzDuKb5PAGTvCdx4%3D'  # noqa: E501
 
     try:
         existing_datastore = Datastore.get(aml_workspace, datastore_name)
@@ -84,7 +83,7 @@ def main():
                                            datastore_name=datastore_name,
                                            container_name=container_name,
                                            account_name=account_name,
-                                           account_key=account_key
+                                           sas_token=sas_token
                                            )
 
     azure_dataset = Dataset.File.from_files(
