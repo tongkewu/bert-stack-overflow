@@ -107,8 +107,6 @@ The variable group should contain the following variables:
 | LOCATION                    | southcentralus                  |
 | SP_APP_ID                   | Fill in "Application (client) ID" from service principal creation |
 | SP_APP_SECRET               | Fill in the secret from service principal creation |
-| DS_KEY                      | Fill in the datastore key you were given |
-
 
 Mark **SP_APP_SECRET** variable as a secret one.
 
