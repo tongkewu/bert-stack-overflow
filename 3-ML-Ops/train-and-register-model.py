@@ -91,7 +91,9 @@ def main():
     azure_dataset = azure_dataset.register(
         workspace=aml_workspace,
         name='Azure Services Dataset',
-        description='Dataset containing azure related posts on Stackoverflow')
+        description='Dataset containing azure related posts on Stackoverflow',
+        create_new_version=True)
+
     azure_dataset.to_path()
     input_data = azure_dataset.as_named_input('input_data1').as_mount(
         '/tmp/data')
