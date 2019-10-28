@@ -262,15 +262,18 @@ Let's see if we can submit a query to our deployed model! Open up a Python inter
 import json
 import requests
 
-
 url = '<your scoring url here>'
 api_key = '<your API key here>'
-payload = {'text': 'I am trying to release a website'}
-headers = {'content-type': 'application/json', 'Authorization':('Bearer '+ api_key)}
-response = requests.post(url, data=json.dumps(payload), headers=headers)
-response_body = json.loads(response.content)  # convert to dict for next step
-print("Given your question of \"{}\", we predict the tag is {} with probability {}"
-      .format(payload.get("text"), response_body.get("prediction"), response_body.get("probability")))
+
+def predict_tags(question_body):
+    payload = {'text': question_body}
+    headers = {'content-type': 'application/json', 'Authorization':('Bearer '+ api_key)}
+    response = requests.post(url, data=json.dumps(payload), headers=headers)
+    response_body = json.loads(response.content)  # convert to dict for next step
+    print("Given your question of \"{}\", we predict the tag is {} with probability {}"
+          .format(payload.get("text"), response_body.get("prediction"), response_body.get("probability")))
+
+predict_tags('How can I specify Service Principal in devops pipeline when deploying virtual machine?')
 ```
 
 
