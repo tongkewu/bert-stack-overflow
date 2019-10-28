@@ -50,14 +50,6 @@ def main():
     if aml_compute is not None:
         print(aml_compute)
 
-    # Get AKS cluster for deployment
-    aks_compute = get_aks(
-        aml_workspace,
-        aks_name
-    )
-    if aks_compute is not None:
-        print(aks_compute)
-
     run_config = RunConfiguration(conda_dependencies=CondaDependencies.create(
         conda_packages=['numpy', 'pandas',
                         'scikit-learn', 'keras'],
@@ -176,6 +168,14 @@ def main():
     response = published_pipeline.submit(  # noqa: F841
                workspace=aml_workspace,
                experiment_name=experiment_name)
+
+    # Get AKS cluster for deployment
+    aks_compute = get_aks(
+        aml_workspace,
+        aks_name
+    )
+    if aks_compute is not None:
+        print(aks_compute)
 
 
 if __name__ == '__main__':
